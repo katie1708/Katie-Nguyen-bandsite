@@ -1,0 +1,110 @@
+@use './partials/global' as *;
+
+.bio-hero {
+    background-image: url(../assets/images/hero-bio.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    &__background-layer {
+        background-color: rgb(50, 50, 50, 0.5);
+        width: 100%;
+        height: 100%;
+        padding: 64px 16px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include tablet {
+            padding: 180px 48px; 
+        }
+        @include desktop {
+            padding: 180px 80px; 
+        }
+    }
+    &__text {
+        color: $white;
+        font-family: 'Avenir Next Demi';
+        margin: 32px 0;
+    }
+}
+
+.bio-content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    @include tablet {
+        padding: 48px;
+    }
+    @include desktop {
+        padding: 48px 80px;
+    }
+    
+    &__image {
+        display: flex;
+        flex-direction: column;
+        margin: 16px 0;
+        &--sub {
+            margin-top: 16px;
+        }
+        @include tablet {
+            margin: 36px 64px 16px 64px;
+        }
+    }
+    &__article {
+        margin: 0;
+        margin-top: 16px;
+        p {
+            margin-bottom: 16px;
+        }
+        :last-child {
+            margin-bottom: 0;
+        }
+        @include tablet {
+            margin: 16px 64px;
+            &--paragraph {
+                display: flex;
+                @include tablet {
+                    gap: 24px;
+                }
+            }
+        }
+    }
+}
+
+.photo-gallery {
+    background-color: $Alabaster;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px 0 16px;
+    * {
+        margin-bottom: 16px;
+    }
+    &__title {
+        @include tablet {
+            margin-bottom: 36px;
+        }
+    }
+    &__images {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0px;
+        @include tablet {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 36px;
+            img {
+                width: 30%;
+                margin: 0;
+                flex-grow: 1;
+            }
+        }
+    }
+    @include tablet {
+        padding: 48px;
+    }
+    @include desktop {
+        padding: 48px 80px;
+    }
+}
+

@@ -1,0 +1,309 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+//Typography
+@font-face {
+    font-family: "Avenir Next Regular";
+    src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"),
+        url("../assets/fonts/Alternative_files/AvenirNextLTPro.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir Next Demi" ;
+    src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"),
+    url("../assets/fonts/Alternative_files/AvenirNextLTProDemi.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir Next Bold" ;
+    src: url("../assets/fonts/Alternative_files/AvenirNextLTProBold.ttf") format("truetype"),
+    url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+}
+
+@mixin mobile-page-section-header {
+    font-family: "Avenir Next Bold";
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin mobile-subheader {
+    font-family: 'Avenir Next Demi';
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin mobile-body {
+    font-family: 'Avenir Next Regular';
+    font-size: 13px;
+    line-height: 18px;
+}
+
+@mixin mobile-label {
+    font-family: 'Avenir Next Bold';
+    font-size: 10px;
+    line-height: 20px;
+}
+
+@mixin tablet-page-header {
+    font-family: 'Avenir Next Bold';
+    font-size: 60px;
+    line-height: 68px;
+}
+
+@mixin tablet-section-header {
+    font-family: 'Avenir Next Bold';
+    font-size: 36px;
+    line-height: 44px;
+}
+
+@mixin tablet-subheader {
+    font-family: 'Avenir Next Demi';
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin tablet-body {
+    font-family: 'Avenir Next Regular';
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin tablet-footer {
+    @include tablet-body;
+    line-height: 20px;
+}
+
+@mixin tablet-label {
+    font-family: 'Avenir Next Bold';
+    font-size: 12px;
+    line-height: 20px;
+}
+
+//media queries
+$tablet-width: 980px;
+$desktop-width: 1200px;
+
+
+@mixin tablet {
+    @media (min-width:$tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width:$desktop-width) {
+        @content;
+    }
+}
+
+//color
+$BandSite-Black:#323232;
+$Silver:#AFAFAF;
+$white:#FFFFFF;
+$BandSite-DarkBlack:#000000;
+$Mercury:#E1E1E1;
+$Alabaster:#FAFAFA;
+
+body{
+    margin:0;
+    color: $BandSite-Black;
+    @include mobile-body;
+    @include tablet {
+        @include tablet-body;
+    }
+}
+
+h2,h3,p {
+    margin: 0;
+}
+
+.header {
+    background-color: $BandSite-Black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+    @include tablet {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 48px;
+    }
+    &__logo {
+        display: inline-block;
+        text-decoration: none;
+        color: $white;
+        @include tablet {
+            margin-bottom: 32px;
+            padding-top: 16px;
+        }
+    }
+    &__nav {
+        width: 100%;
+        padding-top: 16px;
+    }
+    &__menu {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+        @include tablet {
+            width: 40%;
+            padding-left: 48px;
+        }
+        &__items {
+            list-style-type: none;
+            width: 50%;
+            text-align: center;
+            height: 100%;
+            &--link {
+                display: inline-block;
+                text-decoration: none;
+                color: $Silver;
+                padding-bottom: 16px;
+                width: 100%;
+                @include tablet {
+                    padding-bottom: 32px;
+                    width:fit-content;
+                }
+                @include desktop {
+                    &:hover {
+                        color: $white;
+                        border-bottom: solid 3px $white;
+                    }
+                }
+            }
+        }
+    }
+  
+    @include desktop {
+        padding-left: 80px;
+    }
+}
+
+.footer {
+    background-color: $BandSite-Black;
+    color: $white;
+    padding: 32px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    * {
+        margin-bottom: 16px;
+    }
+    &__title {
+        @include mobile-page-section-header
+    }
+    &__icon {
+        width: 35%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        img {
+            margin-right: 16px;
+            height: 25px;
+            width: 25px;
+            @include tablet {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__block1 {
+        margin-bottom: 0;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+            h2 {
+                width: 30%;
+            }
+        }
+    }
+    &__block2 {
+        margin-bottom: 32px;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            section {
+                width: 30%;
+            }
+            margin-bottom: 0;
+        }
+    }
+    &__section {
+        &--title {
+            @include mobile-subheader;
+        }
+    }
+    @include tablet {
+        padding: 48px 48px 32px 48px;
+        position:relative;
+        &__logo {
+            position:absolute;
+            top: 48px;
+            right: 48px;
+            @include desktop {
+                right: 80px;
+            }
+            margin-bottom: 0;
+        }
+    }
+    @include desktop {
+        padding: 48px 80px 32px 80px;
+    }
+}
+
+.page-header {
+    @include mobile-page-section-header;
+    @include tablet {
+        @include tablet-page-header;
+    }
+}
+
+.section-header {
+    @include mobile-page-section-header;
+    font-family: "Avenir Next Demi";
+    @include tablet {
+        @include tablet-section-header;
+        font-family: "Avenir Next Demi";
+    }
+}
+
+.sub-header {
+    @include mobile-subheader;
+    @include tablet {
+        @include tablet-subheader;
+    }
+}
+
+.footer-copy {
+    @include mobile-body;
+    @include tablet {
+        @include tablet-footer;
+    }
+}
+
+.label-button {
+    @include mobile-label;
+    @include tablet {
+        @include tablet-label;
+    }
+}
+
+.logo--text {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+#current {
+    font-family: "Avenir Next Demi";
+    color: $white;
+    border-bottom: solid 3px $white;
+}
+
