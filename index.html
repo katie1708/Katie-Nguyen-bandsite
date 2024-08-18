@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./styles/bio.css" rel="stylesheet">
+    <script src="./scripts/index-page.js" defer></script>
     <title>BANDSITE</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
         <nav class="header__nav">
             <ul class="header__menu">
                 <li class="header__menu__items"><a class="header__menu__items--link" id="current"  href="./index.html">Biography</a></li>
-                <li class="header__menu__items"><a class="header__menu__items--link" href="#">Shows</a></li>
+                <li class="header__menu__items"><a class="header__menu__items--link" href="./pages/shows.html">Shows</a></li>
             </ul>
         </nav>
     </header>
@@ -49,6 +50,23 @@
                 <img src="./assets/images/Photo-gallery-8.jpg" alt="photo-gallery-8">
                 <img src="./assets/images/Photo-gallery-9.jpg" alt="photo-gallery-9">
             </div>   
+        </section>
+        <section class="comments">
+            <h2 class="comments__title section-header">Join the Conversation</h2>
+            <form class="comments__form">
+                <p class="comments__form--avatar"></p>
+                <div class="comments__form--block">
+                    <fieldset>
+                        <label for="userName">NAME</label>
+                        <input type="text" name="userName" id="userName" placeholder="Enter your name">
+                        <label for="text">COMMENT</label>
+                        <textarea type="text" name="text" id="text" placeholder="Add a new comment"></textarea>
+                    </fieldset>
+                    <button type="submit">COMMENT</button>
+                </div>
+            </form>
+            <div class="comments__list">
+            </div>
         </section>
     </main>
     <footer class="footer">

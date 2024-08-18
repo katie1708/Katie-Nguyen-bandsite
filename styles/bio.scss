@@ -108,3 +108,149 @@
     }
 }
 
+.comments {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 16px;
+    @include tablet {
+        padding: 48px;
+    }
+    @include desktop {
+        padding: 48px 80px;
+    }
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: solid 1px $Mercury;
+        padding: 16px 0;
+        @include tablet {
+            margin: 24px 64px 16px 64px;
+        }
+        @include desktop {
+            margin: 24px 240px 16px 240px;
+        }
+        &--avatar {
+            margin-top: 8px;
+            background-image: url(../assets/images/Mohan-muruge.jpg);
+            background-size: cover;
+            background-position:left;
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 50%;
+            @include tablet {
+                width: 48px;
+                height: 48px;
+            }
+        }
+        &--block {
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            @include tablet {
+                width: 92%;
+                align-items: flex-end;
+            }
+        }
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            padding: 0;
+            width: 100%;
+            input {
+                height: 36px;
+                border: solid 1px $Mercury;
+                border-radius: 4px;
+                padding: 12px;
+                margin-bottom: 16px;
+                &::placeholder {
+                    color: $BandSite-Black;
+                    font-family: "Avenir Next Regular";
+                }
+                &:active {
+                    border: solid 1px $BandSite-Black;
+                }
+            }
+            label {
+                color: $Silver;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+            textarea {
+                padding: 12px 12px 60px 12px;
+                border: solid 1px $Mercury;
+                border-radius: 4px;
+                margin-bottom: 16px;
+                &::placeholder {
+                    position: absolute; 
+                    top: 12px;
+                    left: 12px;
+                    color: $BandSite-Black;
+                    font-family: "Avenir Next Regular";
+                }
+            }
+        }
+        button {
+            @include global-button;
+        }
+
+    }
+    &__list {
+        padding-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        @include tablet {
+            margin: 0 64px;
+            padding-top: 0;
+        }
+        @include desktop {
+            margin: 0 240px;
+        }
+    }
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: solid 1px $Mercury;
+        padding-bottom: 16px;
+        &--avatar {
+            background-color: $Mercury;
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 50%;
+            @include tablet {
+                width: 48px;
+                height: 48px;
+            }
+        }
+        &--content {
+            width: 85%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            @include tablet {
+                width: 92%;
+            }
+        }
+        &--name {
+            width: 50%;
+            margin-bottom: 16px;
+            font-family: "Avenir Next Demi";
+        }
+        &--date {
+            width: 50%;
+            margin-bottom: 16px;
+            text-align: right;
+            color: $Silver;
+        }
+        &--text {
+            flex-grow: 1;
+        }
+    }
+}
+

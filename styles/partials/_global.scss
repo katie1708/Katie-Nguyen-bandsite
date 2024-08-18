@@ -307,3 +307,19 @@ h2,h3,p {
     border-bottom: solid 3px $white;
 }
 
+@mixin global-button {
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: $BandSite-Black;
+    color: $white;
+    font-family: "Avenir Next Regular";
+    &:hover {
+        background-color: $BandSite-DarkBlack;
+    }
+    @include tablet {
+        width: 150px;
+    }
+}
+
+
