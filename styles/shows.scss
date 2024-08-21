@@ -1,0 +1,74 @@
+@use './partials/global' as *;
+
+.shows-hero {
+    background-image: url(../assets/images/hero-shows.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    &__background-layer {
+        background-color: rgb(50, 50, 50, 0.5);
+        width: 100%;
+        height: 100%;
+        padding: 32px 16px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include tablet {
+            padding: 180px 48px; 
+        }
+        @include desktop {
+            padding: 180px 80px; 
+        }
+    }
+    &__subheading {
+        color: $white;
+        font-family: 'Avenir Next Regular';
+        margin: 16px 0;
+    }
+    &__heading {
+        color: $white;
+        font-family: 'Avenir Next Demi';
+        margin: 16px 0;
+    }
+    iframe {
+        margin: 16px 0;
+    }
+}
+
+.shows {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    &__title {
+        padding: 0 16px;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        // gap: 16px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 1px $Mercury;
+        padding: 16px;
+        &-label {
+            font-family: 'Avenir Next Regular';
+            color: $Silver;
+            margin-bottom: 4px;
+        }
+        &-content {
+            font-family: 'Avenir Next Regular';
+            color: $BandSite-Black;
+            margin-bottom: 16px;
+        }
+        button {
+            @include global-button;
+        }
+    }
+    
+}
+
+.date {
+    font-family: 'Avenir Next Demi';
+}
