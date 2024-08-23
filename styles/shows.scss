@@ -18,12 +18,20 @@
         }
         @include desktop {
             padding: 180px 80px; 
+            display: flex;
+            flex-direction: row;
         }
     }
     &__subheading {
         color: $white;
         font-family: 'Avenir Next Regular';
         margin: 16px 0;
+        @include tablet {
+            font-size: 24px;
+        }
+        @include desktop {
+            margin-top: 0;
+        }
     }
     &__heading {
         color: $white;
@@ -32,6 +40,9 @@
     }
     iframe {
         margin: 16px 0;
+        @include desktop {
+            width: 60%;
+        }
     }
 }
 
@@ -41,11 +52,17 @@
     padding: 24px 0;
     &__title {
         padding: 0 16px;
+        @include tablet {
+            padding: 0 48px;
+        }
     }
     &__list {
         display: flex;
         flex-direction: column;
         // gap: 16px;
+        @include tablet {
+            padding: 24px;
+        }
     }
     &__item {
         display: flex;
@@ -61,13 +78,64 @@
             font-family: 'Avenir Next Regular';
             color: $BandSite-Black;
             margin-bottom: 16px;
+            @include tablet {
+                margin-bottom: 0;
+            }
         }
         button {
             @include global-button;
         }
     }
+    @include tablet {
+        padding-top: 48px;
+        &__heading {
+            padding: 0 24px;
+            display: flex;
+            gap: 24px;
+            p:first-child {
+                width: 25%;
+            }
+            p:nth-child(2) {
+                width: 25%;
+            }
+        }
+        &__item {
+            padding: 16px 24px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+            p:first-child {
+                width: 25%;
+            }
+            p:nth-child(2) {
+                width: 25%;
+            }
+            p:nth-child(3) {
+                width: 25%;
+            }
+            button {
+                flex-grow: 1;
+            }
+        }
+        }
+       @include desktop {
+        padding: 48px 80px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &__list {
+            width: 75%;
+        }
+        &__title {
+            padding: 0;
+        }
+        &__list {
+            padding: 0;
+        }
+       } 
+    }
     
-}
 
 .date {
     font-family: 'Avenir Next Demi';

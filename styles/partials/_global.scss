@@ -318,7 +318,7 @@ h2,h3,p {
         background-color: $BandSite-DarkBlack;
     }
     @include tablet {
-        width: 150px;
+        max-width: 150px;
     }
 }
 

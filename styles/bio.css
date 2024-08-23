@@ -527,7 +527,7 @@ h2, h3, p {
 }
 @media (min-width: 980px) {
   .comments__form button {
-    width: 150px;
+    max-width: 150px;
   }
 }
 .comments__list {

@@ -300,12 +300,24 @@ h2, h3, p {
 @media (min-width: 1200px) {
   .shows-hero__background-layer {
     padding: 180px 80px;
+    display: flex;
+    flex-direction: row;
   }
 }
 .shows-hero__subheading {
   color: #FFFFFF;
   font-family: "Avenir Next Regular";
   margin: 16px 0;
+}
+@media (min-width: 980px) {
+  .shows-hero__subheading {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .shows-hero__subheading {
+    margin-top: 0;
+  }
 }
 .shows-hero__heading {
   color: #FFFFFF;
@@ -314,6 +326,11 @@ h2, h3, p {
 }
 .shows-hero iframe {
   margin: 16px 0;
+}
+@media (min-width: 1200px) {
+  .shows-hero iframe {
+    width: 60%;
+  }
 }
 
 .shows {
@@ -324,9 +341,19 @@ h2, h3, p {
 .shows__title {
   padding: 0 16px;
 }
+@media (min-width: 980px) {
+  .shows__title {
+    padding: 0 48px;
+  }
+}
 .shows__list {
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 980px) {
+  .shows__list {
+    padding: 24px;
+  }
 }
 .shows__item {
   display: flex;
@@ -344,6 +371,11 @@ h2, h3, p {
   color: #323232;
   margin-bottom: 16px;
 }
+@media (min-width: 980px) {
+  .shows__item-content {
+    margin-bottom: 0;
+  }
+}
 .shows__item button {
   height: 40px;
   width: 100%;
@@ -357,7 +389,59 @@ h2, h3, p {
 }
 @media (min-width: 980px) {
   .shows__item button {
-    width: 150px;
+    max-width: 150px;
+  }
+}
+@media (min-width: 980px) {
+  .shows {
+    padding-top: 48px;
+  }
+  .shows__heading {
+    padding: 0 24px;
+    display: flex;
+    gap: 24px;
+  }
+  .shows__heading p:first-child {
+    width: 25%;
+  }
+  .shows__heading p:nth-child(2) {
+    width: 25%;
+  }
+  .shows__item {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+  .shows__item p:first-child {
+    width: 25%;
+  }
+  .shows__item p:nth-child(2) {
+    width: 25%;
+  }
+  .shows__item p:nth-child(3) {
+    width: 25%;
+  }
+  .shows__item button {
+    flex-grow: 1;
+  }
+}
+@media (min-width: 1200px) {
+  .shows {
+    padding: 48px 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .shows__list {
+    width: 75%;
+  }
+  .shows__title {
+    padding: 0;
+  }
+  .shows__list {
+    padding: 0;
   }
 }
 
