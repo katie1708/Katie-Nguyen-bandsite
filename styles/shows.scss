@@ -1,3 +1,5 @@
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
 @use './partials/global' as *;
 
 .shows-hero {
@@ -14,12 +16,13 @@
         flex-direction: column;
         justify-content: center;
         @include tablet {
-            padding: 180px 48px; 
+            padding:48px; 
         }
         @include desktop {
             padding: 180px 80px; 
             display: flex;
             flex-direction: row;
+            gap: 80px;
         }
     }
     &__subheading {
@@ -40,8 +43,13 @@
     }
     iframe {
         margin: 16px 0;
+        width: 100%;
+        height: 150px;
+        @include tablet {
+            max-width: 60%;
+        }
         @include desktop {
-            width: 60%;
+            max-width: 40%;
         }
     }
 }
@@ -59,7 +67,6 @@
     &__list {
         display: flex;
         flex-direction: column;
-        // gap: 16px;
         @include tablet {
             padding: 24px;
         }
@@ -84,6 +91,15 @@
         }
         button {
             @include global-button;
+        }
+        &:hover {
+            background-color: $Alabaster;
+        }
+        &--selected {
+            background-color: $Mercury !important;
+        }
+        &--bold {
+            font-family: 'Avenir Next Demi';
         }
     }
     @include tablet {
@@ -117,6 +133,9 @@
             button {
                 flex-grow: 1;
             }
+            &-selected {
+                background-color: $Mercury !important;
+            }
         }
         }
        @include desktop {
@@ -135,8 +154,3 @@
         }
        } 
     }
-    
-
-.date {
-    font-family: 'Avenir Next Demi';
-}

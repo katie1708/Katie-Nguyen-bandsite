@@ -1,11 +1,3 @@
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
 @font-face {
   font-family: "Avenir Next Regular";
   src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../assets/fonts/Alternative_files/AvenirNextLTPro.ttf") format("truetype");
@@ -18,6 +10,14 @@ html {
   font-family: "Avenir Next Bold";
   src: url("../assets/fonts/Alternative_files/AvenirNextLTProBold.ttf") format("truetype"), url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
 }
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   color: #323232;
@@ -51,11 +51,6 @@ h2, h3, p {
     padding-left: 48px;
   }
 }
-.header__logo {
-  display: inline-block;
-  text-decoration: none;
-  color: #FFFFFF;
-}
 @media (min-width: 980px) {
   .header__logo {
     margin-bottom: 32px;
@@ -78,13 +73,13 @@ h2, h3, p {
     padding-left: 48px;
   }
 }
-.header__menu__items {
+.header__menu-items {
   list-style-type: none;
   width: 50%;
   text-align: center;
   height: 100%;
 }
-.header__menu__items--link {
+.header__menu-items--link {
   display: inline-block;
   text-decoration: none;
   color: #AFAFAF;
@@ -92,14 +87,14 @@ h2, h3, p {
   width: 100%;
 }
 @media (min-width: 980px) {
-  .header__menu__items--link {
+  .header__menu-items--link {
     padding-bottom: 32px;
     width: -moz-fit-content;
     width: fit-content;
   }
 }
 @media (min-width: 1200px) {
-  .header__menu__items--link:hover {
+  .header__menu-items--link:hover {
     color: #FFFFFF;
     border-bottom: solid 3px #FFFFFF;
   }
@@ -264,11 +259,6 @@ h2, h3, p {
     font-size: 12px;
     line-height: 20px;
   }
-}
-
-.logo--text {
-  font-size: 24px;
-  line-height: 24px;
 }
 
 #current {
@@ -436,7 +426,7 @@ h2, h3, p {
     margin: 24px 240px 16px 240px;
   }
 }
-.comments__form--avatar {
+.comments__form-avatar {
   margin-top: 8px;
   background-image: url(../assets/images/Mohan-muruge.jpg);
   background-size: cover;
@@ -448,18 +438,18 @@ h2, h3, p {
   border-radius: 50%;
 }
 @media (min-width: 980px) {
-  .comments__form--avatar {
+  .comments__form-avatar {
     width: 48px;
     height: 48px;
   }
 }
-.comments__form--block {
+.comments__form-block {
   display: flex;
   flex-direction: column;
   width: 85%;
 }
 @media (min-width: 980px) {
-  .comments__form--block {
+  .comments__form-block {
     width: 92%;
     align-items: flex-end;
   }
@@ -472,22 +462,22 @@ h2, h3, p {
   width: 100%;
 }
 .comments__form fieldset input {
+  background-color: #FAFAFA;
   height: 36px;
   border: solid 1px #E1E1E1;
   border-radius: 4px;
   padding: 12px;
   margin-bottom: 16px;
+  font-family: "Avenir Next Regular";
 }
 .comments__form fieldset input::-moz-placeholder {
   color: #323232;
-  font-family: "Avenir Next Regular";
 }
 .comments__form fieldset input::placeholder {
   color: #323232;
-  font-family: "Avenir Next Regular";
 }
-.comments__form fieldset input:active {
-  border: solid 1px #323232;
+.comments__form fieldset input:focus {
+  border: solid 1px #323232 !important;
 }
 .comments__form fieldset label {
   color: #AFAFAF;
@@ -495,24 +485,21 @@ h2, h3, p {
   margin-bottom: 4px;
 }
 .comments__form fieldset textarea {
+  background-color: #FAFAFA;
   padding: 12px 12px 60px 12px;
   border: solid 1px #E1E1E1;
   border-radius: 4px;
   margin-bottom: 16px;
+  font-family: "Avenir Next Regular";
 }
 .comments__form fieldset textarea::-moz-placeholder {
-  position: absolute;
-  top: 12px;
-  left: 12px;
   color: #323232;
-  font-family: "Avenir Next Regular";
 }
 .comments__form fieldset textarea::placeholder {
-  position: absolute;
-  top: 12px;
-  left: 12px;
   color: #323232;
-  font-family: "Avenir Next Regular";
+}
+.comments__form fieldset textarea:focus {
+  border: solid 1px #323232 !important;
 }
 .comments__form button {
   height: 40px;
@@ -527,7 +514,7 @@ h2, h3, p {
 }
 @media (min-width: 980px) {
   .comments__form button {
-    max-width: 150px;
+    width: 150px;
   }
 }
 .comments__list {
@@ -554,7 +541,7 @@ h2, h3, p {
   border-bottom: solid 1px #E1E1E1;
   padding-bottom: 16px;
 }
-.comments__item--avatar {
+.comments__item-avatar {
   background-color: #E1E1E1;
   width: 36px;
   height: 36px;
@@ -563,12 +550,12 @@ h2, h3, p {
   border-radius: 50%;
 }
 @media (min-width: 980px) {
-  .comments__item--avatar {
+  .comments__item-avatar {
     width: 48px;
     height: 48px;
   }
 }
-.comments__item--content {
+.comments__item-content {
   width: 85%;
   display: flex;
   flex-direction: row;
@@ -576,21 +563,21 @@ h2, h3, p {
   justify-content: space-between;
 }
 @media (min-width: 980px) {
-  .comments__item--content {
+  .comments__item-content {
     width: 92%;
   }
 }
-.comments__item--name {
+.comments__item-name {
   width: 50%;
   margin-bottom: 16px;
   font-family: "Avenir Next Demi";
 }
-.comments__item--date {
+.comments__item-date {
   width: 50%;
   margin-bottom: 16px;
   text-align: right;
   color: #AFAFAF;
 }
-.comments__item--text {
+.comments__item-text {
   flex-grow: 1;
 }/*# sourceMappingURL=bio.css.map */

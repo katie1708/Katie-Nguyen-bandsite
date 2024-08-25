@@ -1,0 +1,107 @@
+@use './variables' as *;
+
+//Typography
+@font-face {
+    font-family: "Avenir Next Regular";
+    src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"),
+        url("../assets/fonts/Alternative_files/AvenirNextLTPro.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir Next Demi" ;
+    src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"),
+    url("../assets/fonts/Alternative_files/AvenirNextLTProDemi.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir Next Bold" ;
+    src: url("../assets/fonts/Alternative_files/AvenirNextLTProBold.ttf") format("truetype"),
+    url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+}
+
+@mixin mobile-page-section-header {
+    font-family: "Avenir Next Bold";
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin mobile-subheader {
+    font-family: 'Avenir Next Demi';
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin mobile-body {
+    font-family: 'Avenir Next Regular';
+    font-size: 13px;
+    line-height: 18px;
+}
+
+@mixin mobile-label {
+    font-family: 'Avenir Next Bold';
+    font-size: 10px;
+    line-height: 20px;
+}
+
+@mixin tablet-page-header {
+    font-family: 'Avenir Next Bold';
+    font-size: 60px;
+    line-height: 68px;
+}
+
+@mixin tablet-section-header {
+    font-family: 'Avenir Next Bold';
+    font-size: 36px;
+    line-height: 44px;
+}
+
+@mixin tablet-subheader {
+    font-family: 'Avenir Next Demi';
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin tablet-body {
+    font-family: 'Avenir Next Regular';
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin tablet-footer {
+    @include tablet-body;
+    line-height: 20px;
+}
+
+@mixin tablet-label {
+    font-family: 'Avenir Next Bold';
+    font-size: 12px;
+    line-height: 20px;
+}
+
+@mixin tablet {
+    @media (min-width:$tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width:$desktop-width) {
+        @content;
+    }
+}
+
+//button
+@mixin global-button {
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: $BandSite-Black;
+    color: $white;
+    font-family: "Avenir Next Demi";
+    &:hover {
+        background-color: $BandSite-DarkBlack;
+    }
+    @include tablet {
+        width: 150px;
+    }
+}

@@ -20,31 +20,31 @@ let comments = [
 // Create comment card
 
 function createCommentCard(comment) {
-    //comment card as an article
+    //create comment card as an article
     let commentCard = document.createElement('article');
     commentCard.classList.add('comments__item');
 
     //add comment avatar
     let commentAvatar = document.createElement('p');
-    commentAvatar.classList.add('comments__item--avatar');
+    commentAvatar.classList.add('comments__item-avatar');
     
     commentCard.appendChild(commentAvatar);
 
     //add comment content div
     let commentContent = document.createElement('div');
-    commentContent.classList.add('comments__item--content');
+    commentContent.classList.add('comments__item-content');
 
     commentCard.appendChild(commentContent);
 
     //add comment elements to comment content div
     let commentName = document.createElement('p');
-    commentName.classList.add('comments__item--name');
+    commentName.classList.add('comments__item-name');
     commentName.innerText = comment.name;
     let commentDate = document.createElement('p');
-    commentDate.classList.add('comments__item--date');
+    commentDate.classList.add('comments__item-date');
     commentDate.innerText = comment.timestamp;
     let commentText = document.createElement('p');
-    commentText.classList.add('comments__item--text');
+    commentText.classList.add('comments__item-text');
     commentText.innerText = comment.text;
 
     commentContent.appendChild(commentName);
@@ -82,7 +82,7 @@ function formSubmitHandler(event) {
     };
 
     //push new comment object to the comments list
-    comments.push(commentNew);
+    comments.unshift(commentNew);
 
     //re-render all comments
     renderComment();
@@ -94,5 +94,5 @@ function formSubmitHandler(event) {
 
 let commentForm = document.querySelector('.comments__form');
 commentForm.addEventListener('submit',formSubmitHandler);
-renderComment()
+renderComment();
 

@@ -32,7 +32,7 @@ let shows = [
     }
 ]
 
-//Create shows item
+//Create show item
 
 function createShowItemMobile(show) {
     //shows item as an article
@@ -55,7 +55,7 @@ function createShowItemMobile(show) {
     //create item content from array
     let dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
-    dateInfo.classList.add('date');
+    dateInfo.classList.add('shows__item--bold');
     dateInfo.innerText = show.date;
 
     let venueInfo = document.createElement('p');
@@ -90,7 +90,7 @@ function createShowItemTablet(show) {
     //create item content from array
     let dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
-    dateInfo.classList.add('date');
+    dateInfo.classList.add('shows__item--bold');
     dateInfo.innerText = show.date;
 
     let venueInfo = document.createElement('p');
@@ -114,17 +114,30 @@ function createShowItemTablet(show) {
     return showItem;
 }
 
+//Change show item background color on clicked
+function selectedItem() {
+    let showItems = document.querySelectorAll('.shows__item');
+    showItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            showItems.forEach((i) => {
+                i.classList.remove('shows__item--selected');
+            });
+            item.classList.add('shows__item--selected');
+        })
+    });
+};
+
+
 //Render shows list
 function renderShowMobile() {
     let showList = document.querySelector('.shows__list');
 
     showList.innerHTML = "";
 
-    for ( let i = 0 ; i < shows.length; i++ ) {
-        showItem = createShowItemMobile(shows[i]);
+    shows.forEach((show) => {
+        showItem = createShowItemMobile(show);
         showList.appendChild(showItem);
-
-    }
+    })
 }
 
 function renderShowTablet() {
@@ -154,11 +167,10 @@ function renderShowTablet() {
 
     showList.appendChild(showHeading);
 
-    for ( let i = 0 ; i < shows.length; i++ ) {
-        showItem = createShowItemTablet(shows[i]);
+    shows.forEach((show) => {
+        showItem = createShowItemTablet(show);
         showList.appendChild(showItem);
-
-    }
+    })
 }
 
 function renderShow() {
@@ -167,10 +179,12 @@ function renderShow() {
     } else if (window.innerWidth >= 980) {
         renderShowTablet();
     } else;
+    selectedItem();
 }
 
 renderShow();
 
+//Render Shows when changing screen size
 const screenSize = window.matchMedia("(min-width: 980px)");
 
 screenSize.addEventListener('change', (event) => {
@@ -178,5 +192,6 @@ screenSize.addEventListener('change', (event) => {
         renderShowTablet();
     } else {
         renderShowMobile();
-    }
+    };
+    selectedItem();
   });
