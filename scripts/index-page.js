@@ -1,21 +1,30 @@
-//Create comment array
-let comments = [
-    {
-        name:"Victor Pinto",
-        timestamp: "11/02/2023",
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    },
-    {
-        name:"Christina Cabrera",
-        timestamp: "10/28/2023",
-        text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    },
-    {
-        name:"Isaac Tadesse",
-        timestamp: "10/20/2023",
-        text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-]
+import {BandSiteApi, myApiKey} from './band-site-api.js';
+
+//Retrieve comments array from API
+const bandSite = new BandSiteApi(myApiKey);
+
+// console.log(comments);
+
+// let comments = [
+//     {
+//         name:"Victor Pinto",
+//         timestamp: "11/02/2023",
+//         text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
+//     },
+//     {
+//         name:"Christina Cabrera",
+//         timestamp: "10/28/2023",
+//         text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
+//     },
+//     {
+//         name:"Isaac Tadesse",
+//         timestamp: "10/20/2023",
+//         text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
+//     }
+// ]
+
+//Date formator
+const dateFormator = Intl.DateTimeFormat('en-US');
 
 // Create comment card
 
@@ -42,10 +51,10 @@ function createCommentCard(comment) {
     commentName.innerText = comment.name;
     let commentDate = document.createElement('p');
     commentDate.classList.add('comments__item-date');
-    commentDate.innerText = comment.timestamp;
+    commentDate.innerText = dateFormator.format(comment.timestamp);
     let commentText = document.createElement('p');
     commentText.classList.add('comments__item-text');
-    commentText.innerText = comment.text;
+    commentText.innerText = comment.comment;
 
     commentContent.appendChild(commentName);
     commentContent.appendChild(commentDate);
@@ -55,7 +64,7 @@ function createCommentCard(comment) {
 }
 
 //Render comments list
-function renderComment() {
+function renderComment(comments) {
     let commentList = document.querySelector('.comments__list');
 
     //Clear comment list
@@ -73,19 +82,25 @@ function formSubmitHandler(event) {
     event.preventDefault();
 
     //construct new comment object
-    let dateFormator = Intl.DateTimeFormat('en-US');
-
     let commentNew = {
         name: event.target.userName.value,
-        timestamp: dateFormator.format(event.timestamp),
-        text: event.target.text.value
+        comment: event.target.text.value
     };
 
-    //push new comment object to the comments list
-    comments.unshift(commentNew);
+    //post new comment object to the API
+    bandSite.postComment(commentNew)
+    .then(() => {
+        let comments = bandSite.getComments()
+        .then((comments) => {
+            renderComment(comments);
+        });
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 
     //re-render all comments
-    renderComment();
+    // renderComment(comments);
 
     //Clear input after submit
     let clearForm = document.querySelector('.comments__form')
@@ -94,5 +109,50 @@ function formSubmitHandler(event) {
 
 let commentForm = document.querySelector('.comments__form');
 commentForm.addEventListener('submit',formSubmitHandler);
-renderComment();
+let comments = await bandSite.getComments()
+.then((comments) => {
+    renderComment(comments);
+});
 
+
+// async function postComment(comment) {
+//     try {
+//         const myApiKey = "7848050b-8b05-4530-b826-ad78cff1d7b5";
+//         const baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
+//         const commentEndpoint = `${baseURL}comments?api_key=${myApiKey}`;
+//         const apiHeader = {
+//             "Content-Type": "application/json"
+//         };
+//         const newComment = await axios.post(commentEndpoint, comment, apiHeader);
+//         console.log(newComment);
+//     }
+//     catch (error) {
+//         console.error(error); 
+//     }
+// }
+
+// async function getComments() {
+//     try {
+//         const myApiKey = "7848050b-8b05-4530-b826-ad78cff1d7b5";
+//         const baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
+//         const commentEndpoint = `${baseURL}comments?api_key=${myApiKey}`
+//         const commentsRes = await axios.get(commentEndpoint);
+//         console.log(commentsRes.data);
+//     }
+//     catch (error) {
+//         console.error(error); 
+//     }
+// }
+
+// async function getShows() {
+//     try {
+//         const myApiKey = "7848050b-8b05-4530-b826-ad78cff1d7b5";
+//         const baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
+//         const showsEndpoint = `${baseURL}showdates?api_key=${myApiKey}`
+//         const showsRes = await axios.get(showsEndpoint);
+//         console.log(showsRes.data);
+//     }
+//     catch (error) {
+//         console.error(error); 
+//     }
+// }
