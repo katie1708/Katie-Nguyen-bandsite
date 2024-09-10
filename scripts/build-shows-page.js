@@ -4,43 +4,14 @@ import {BandSiteApi, myApiKey} from './band-site-api.js';
 const bandSite = new BandSiteApi(myApiKey);
 let shows = await bandSite.getShows();
 
-// console.log(shows);
-// let shows = [
-//     {
-//         date: "Mon Sept 09 2024",
-//         venue: "Ronald Lane",
-//         location: "San Francisco, CA"
-//     },
-//     {
-//         date: "Tue Sept 17 2024",
-//         venue: "Pier 3 East",
-//         location: "San Francisco, CA"
-//     },
-//     {
-//         date: "Sat Oct 12 2024",
-//         venue: "View Lounge",
-//         location: "San Francisco, CA"
-//     },
-//     {
-//         date: "Sat Nov 16 2024",
-//         venue: "Hyatt Agency",
-//         location: "San Francisco, CA"
-//     },
-//     {
-//         date: "Fri Nov 29 2024",
-//         venue: "Moscow Center",
-//         location: "San Francisco, CA"
-//     },
-//     {
-//         date: "Wed Dec 18 2024",
-//         venue: "Press Club",
-//         location: "San Francisco, CA"
-//     }
-// ]
+//Date formatter
+const specFormat = {
+    year:"numeric", 
+    month:"2-digit", 
+    day:"2-digit"
+};
 
-//Date formator
-const dateFormator = Intl.DateTimeFormat('en-US');
-
+const dateFormatter = Intl.DateTimeFormat('en-US',specFormat);
 
 //Create show item
 
@@ -66,7 +37,7 @@ function createShowItemMobile(show) {
     let dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
     dateInfo.classList.add('shows__item--bold');
-    dateInfo.innerText = dateFormator.format(show.date);
+    dateInfo.innerText = dateFormatter.format(show.date);
 
     let venueInfo = document.createElement('p');
     venueInfo.classList.add('shows__item-content');
@@ -101,7 +72,7 @@ function createShowItemTablet(show) {
     let dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
     dateInfo.classList.add('shows__item--bold');
-    dateInfo.innerText = dateFormator.format(show.date);
+    dateInfo.innerText = dateFormatter.format(show.date);
 
     let venueInfo = document.createElement('p');
     venueInfo.classList.add('shows__item-content');

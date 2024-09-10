@@ -1,10 +1,6 @@
 //one-time apiKey
 export const myApiKey = "7848050b-8b05-4530-b826-ad78cff1d7b5";
 
-// {
-//     "api_key": "7848050b-8b05-4530-b826-ad78cff1d7b5"
-// }
-
 //Create BandSiteApi class
 
 export class BandSiteApi {
@@ -20,7 +16,6 @@ export class BandSiteApi {
                 "Content-Type": "application/json"
             };
             const newComment = await axios.post(commentEndpoint, comment, apiHeader);
-            // console.log(newComment);
         }
         catch (error) {
             console.error(error); 
@@ -31,8 +26,11 @@ export class BandSiteApi {
         try {
             const commentEndpoint = `${this.baseURL}comments?api_key=${this.apiKey}`
             const commentsRes = await axios.get(commentEndpoint);
-            const comments = commentsRes.data;
-            return comments;
+            const unsortedComments = commentsRes.data;
+            const sortedComments = unsortedComments.sort((a,b) => {
+                return b.timestamp - a.timestamp;
+            })
+            return sortedComments;
         }
         catch (error) {
             console.error(error); 
@@ -43,8 +41,11 @@ export class BandSiteApi {
         try {
             const showsEndpoint = `${this.baseURL}showdates?api_key=${this.apiKey}`
             const showsRes = await axios.get(showsEndpoint);
-            const shows = showsRes.data;
-            return shows;
+            const unsortedShows = showsRes.data;
+            const sortedShows = unsortedShows.sort((a,b) => {
+                return a.date - b.date;
+            })
+            return sortedShows;
         }
         catch (error) {
             console.error(error); 
