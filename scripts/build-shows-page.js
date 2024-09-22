@@ -17,38 +17,38 @@ const dateFormatter = Intl.DateTimeFormat('en-US',specFormat);
 
 function createShowItemMobile(show) {
     //shows item as an article
-    let showItem = document.createElement('article');
+    const showItem = document.createElement('article');
     showItem.classList.add('shows__item');
 
     //create item labels
-    let dateLabel = document.createElement('p');
+    const dateLabel = document.createElement('p');
     dateLabel.classList.add('shows__item-label')
     dateLabel.innerText = "DATE";
 
-    let venueLabel = document.createElement('p');
+    const venueLabel = document.createElement('p');
     venueLabel.classList.add('shows__item-label')
     venueLabel.innerText = "VENUE";
 
-    let locationLabel = document.createElement('p');
+    const locationLabel = document.createElement('p');
     locationLabel.classList.add('shows__item-label')
     locationLabel.innerText = "LOCATION";
 
     //create item content from array
-    let dateInfo = document.createElement('p');
+    const dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
     dateInfo.classList.add('shows__item--bold');
     dateInfo.innerText = dateFormatter.format(show.date);
 
-    let venueInfo = document.createElement('p');
+    const venueInfo = document.createElement('p');
     venueInfo.classList.add('shows__item-content');
     venueInfo.innerText = show.place;
 
-    let locationInfo = document.createElement('p');
+    const locationInfo = document.createElement('p');
     locationInfo.classList.add('shows__item-content');
     locationInfo.innerText = show.location;
 
     //create button
-    let buyTicket = document.createElement('button');
+    const buyTicket = document.createElement('button');
     buyTicket.innerText = "BUY TICKETS";
 
     //add all elements to the item
@@ -65,25 +65,25 @@ function createShowItemMobile(show) {
 
 function createShowItemTablet(show) {
     //shows item as an article
-    let showItem = document.createElement('article');
+    const showItem = document.createElement('article');
     showItem.classList.add('shows__item');
 
     //create item content from array
-    let dateInfo = document.createElement('p');
+    const dateInfo = document.createElement('p');
     dateInfo.classList.add('shows__item-content');
     dateInfo.classList.add('shows__item--bold');
     dateInfo.innerText = dateFormatter.format(show.date);
 
-    let venueInfo = document.createElement('p');
+    const venueInfo = document.createElement('p');
     venueInfo.classList.add('shows__item-content');
     venueInfo.innerText = show.place;
 
-    let locationInfo = document.createElement('p');
+    const locationInfo = document.createElement('p');
     locationInfo.classList.add('shows__item-content');
     locationInfo.innerText = show.location;
 
     //create button
-    let buyTicket = document.createElement('button');
+    const buyTicket = document.createElement('button');
     buyTicket.innerText = "BUY TICKETS";
 
     //add all elements to the item
@@ -97,7 +97,7 @@ function createShowItemTablet(show) {
 
 //Change show item background color on clicked
 function selectedItem() {
-    let showItems = document.querySelectorAll('.shows__item');
+    const showItems = document.querySelectorAll('.shows__item');
     showItems.forEach((item) => {
         item.addEventListener('click', () => {
             showItems.forEach((i) => {
@@ -111,7 +111,7 @@ function selectedItem() {
 
 //Render shows list
 function renderShowMobile() {
-    let showList = document.querySelector('.shows__list');
+    const showList = document.querySelector('.shows__list');
 
     showList.innerHTML = "";
 
@@ -122,23 +122,23 @@ function renderShowMobile() {
 }
 
 function renderShowTablet() {
-    let showList = document.querySelector('.shows__list');
+    const showList = document.querySelector('.shows__list');
 
     showList.innerHTML = "";
 
     //create Date, Venue, Location headings 
-    let showHeading = document.createElement('div');
+    const showHeading = document.createElement('div');
     showHeading.classList.add('shows__heading');
 
-    let dateLabel = document.createElement('p');
+    const dateLabel = document.createElement('p');
     dateLabel.classList.add('shows__item-label')
     dateLabel.innerText = "DATE";
 
-    let venueLabel = document.createElement('p');
+    const venueLabel = document.createElement('p');
     venueLabel.classList.add('shows__item-label')
     venueLabel.innerText = "VENUE";
 
-    let locationLabel = document.createElement('p');
+    const locationLabel = document.createElement('p');
     locationLabel.classList.add('shows__item-label')
     locationLabel.innerText = "LOCATION";
 
@@ -149,7 +149,7 @@ function renderShowTablet() {
     showList.appendChild(showHeading);
 
     shows.forEach((show) => {
-        let showItem = createShowItemTablet(show);
+        const showItem = createShowItemTablet(show);
         showList.appendChild(showItem);
     })
 }

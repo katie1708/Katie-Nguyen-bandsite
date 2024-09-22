@@ -16,29 +16,29 @@ const dateFormatter = Intl.DateTimeFormat('en-US',specFormat);
 
 function createCommentCard(comment) {
     //create comment card as an article
-    let commentCard = document.createElement('article');
+    const commentCard = document.createElement('article');
     commentCard.classList.add('comments__item');
 
     //add comment avatar
-    let commentAvatar = document.createElement('p');
+    const commentAvatar = document.createElement('p');
     commentAvatar.classList.add('comments__item-avatar');
     
     commentCard.appendChild(commentAvatar);
 
     //add comment content div
-    let commentContent = document.createElement('div');
+    const commentContent = document.createElement('div');
     commentContent.classList.add('comments__item-content');
 
     commentCard.appendChild(commentContent);
 
     //add comment elements to comment content div
-    let commentName = document.createElement('p');
+    const commentName = document.createElement('p');
     commentName.classList.add('comments__item-name');
     commentName.innerText = comment.name;
-    let commentDate = document.createElement('p');
+    const commentDate = document.createElement('p');
     commentDate.classList.add('comments__item-date');
     commentDate.innerText = dateFormatter.format(comment.timestamp);
-    let commentText = document.createElement('p');
+    const commentText = document.createElement('p');
     commentText.classList.add('comments__item-text');
     commentText.innerText = comment.comment;
 
@@ -51,14 +51,14 @@ function createCommentCard(comment) {
 
 //Render comments list
 function renderComment(comments) {
-    let commentList = document.querySelector('.comments__list');
+    const commentList = document.querySelector('.comments__list');
 
     //Clear comment list
     commentList.innerHTML = "";
 
     //Render all comments in the array
     for (let i = 0 ; i < comments.length; i++ ) {
-        let card = createCommentCard(comments[i]);
+        const card = createCommentCard(comments[i]);
         commentList.appendChild(card);
     }
 }
@@ -68,7 +68,7 @@ function formSubmitHandler(event) {
     event.preventDefault();
 
     //construct new comment object
-    let commentNew = {
+    const commentNew = {
         name: event.target.userName.value,
         comment: event.target.text.value
     };
@@ -76,7 +76,7 @@ function formSubmitHandler(event) {
     //post new comment object to the API and re-render the comments list
     bandSite.postComment(commentNew)
     .then(() => {
-        let comments = bandSite.getComments()
+        const comments = bandSite.getComments()
         .then((comments) => {
             renderComment(comments);
         })
@@ -88,14 +88,14 @@ function formSubmitHandler(event) {
         console.error(error);
     });
 
-    //Clear input after submit
-    let clearForm = document.querySelector('.comments__form')
+    //Clear form after submit
+    const clearForm = document.querySelector('.comments__form')
     clearForm.reset();
 }
 
-let commentForm = document.querySelector('.comments__form');
+const commentForm = document.querySelector('.comments__form');
 commentForm.addEventListener('submit',formSubmitHandler);
-let comments = await bandSite.getComments()
+const comments = await bandSite.getComments()
 .then((comments) => {
     renderComment(comments);
 })
